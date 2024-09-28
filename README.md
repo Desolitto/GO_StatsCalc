@@ -26,8 +26,7 @@ The program supports optional flags to output specific statistical metrics:
 ### Example
 ```sh
 $ ./statscalc
-Введите числа в диапазоне от -100000 до 100000
-Чтобы завершить ввод: Ctrl+D
+Enter numbers, each on a new line (press Ctrl+D to finish)
 10
 20
 30
@@ -38,4 +37,4 @@ ______________
 Mean: 30.00
 Median: 30.00
 Mode: 10.00
-SD: 14.14
+SD: 15.81
