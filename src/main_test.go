@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-// Тест для функции Scanner
 func TestScanner_ValidInput(t *testing.T) {
 	input := "1\n2\n3\n"
 	r := strings.NewReader(input)
@@ -25,7 +24,6 @@ func TestScanner_ValidInput(t *testing.T) {
 }
 
 func TestScanner_InvalidInput(t *testing.T) {
-	// Невалидный ввод (не целое число)
 	input := "abc\n"
 	r := strings.NewReader(input)
 
@@ -36,7 +34,6 @@ func TestScanner_InvalidInput(t *testing.T) {
 }
 
 func TestScanner_OutOfRange(t *testing.T) {
-	// Число вне допустимого диапазона
 	input := "100001\n"
 	r := strings.NewReader(input)
 
@@ -47,7 +44,6 @@ func TestScanner_OutOfRange(t *testing.T) {
 }
 
 func TestScanner_EmptyInput(t *testing.T) {
-	// Пустой ввод
 	input := ""
 	r := strings.NewReader(input)
 

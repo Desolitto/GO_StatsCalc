@@ -13,16 +13,15 @@ import (
 )
 
 var (
-	ErrNotInteger = errors.New("ошибка ввода: невалидные данные")
-	ErrOutOfRange = errors.New("ошибка ввода: число вне диапазона (-100000 до 100000)")
-	ErrEmptyInput = errors.New("ошибка ввода: введено пустое значение")
+	ErrNotInteger = errors.New("input error: invalid data")
+	ErrOutOfRange = errors.New("input error: number out of range (-100000 to 100000)")
+	ErrEmptyInput = errors.New("input error: empty value entered")
 )
 
 func Scanner(r io.Reader) ([]int, error) {
-	// func Scanner() {
 	var slice []int
 	scanner := bufio.NewScanner(r)
-	fmt.Println("Введите числа, каждое c новой строки (нажмите Ctrl+D для завершения)")
+	fmt.Println("Enter numbers, each on a new line (press Ctrl+D to finish)")
 	for scanner.Scan() {
 		line := scanner.Text()
 		input, err := strconv.Atoi(line)
@@ -33,13 +32,12 @@ func Scanner(r io.Reader) ([]int, error) {
 			return nil, ErrOutOfRange
 		}
 		slice = append(slice, input)
-
 	}
 	if len(slice) == 0 {
 		return nil, ErrEmptyInput
 	}
 	if err := scanner.Err(); err != nil {
-		return nil, errors.New("ошибка чтения ввода")
+		return nil, errors.New("input reading error")
 	}
 	return slice, nil
 }
@@ -99,10 +97,10 @@ func applyDefaultFlags(meanFlag, medianFlag, modeFlag, sdFlag *bool) {
 }
 
 func main() {
-	meanFlag := flag.Bool("mean", false, "Рассчитать среднее значение")
-	modeFlag := flag.Bool("mode", false, "Рассчитать моду")
-	medianFlag := flag.Bool("median", false, "Рассчитать медиану")
-	sdFlag := flag.Bool("sd", false, "Рассчитать стандартное отклонение")
+	meanFlag := flag.Bool("mean", false, "Calculate mean value")
+	modeFlag := flag.Bool("mode", false, "Calculate mode")
+	medianFlag := flag.Bool("median", false, "Calculate median")
+	sdFlag := flag.Bool("sd", false, "Calculate standard deviation")
 
 	flag.Parse()
 
@@ -126,5 +124,4 @@ func main() {
 	if *sdFlag {
 		fmt.Printf("SD: %.2f\n", sd(slice))
 	}
-
 }
